@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="build/tailwind.css">
+    <title>YouTube</title>
+    <script type="text/javascript" src="../public/vue.js"></script>
+</head>
+<body class="bg-gray-100">
+    <div id="app" class="flex flex-col h-screen w-screen">
+        <div class="header bg-white flex justify-between items-center w-full">
+            <div class="flex items-center py-4 pr-4">
+                <div class="px-6 pb-1">
+                    <a href="#"><svg class="fill-current text-gray-700 h-5 w-5" viewBox="0 0 20 8">
+                        <path d="M0 12h18v-2H0v2zm0-5h18V5H0v2zm0-7v2h18V0H0z"/>
+                    </svg></a>
+                </div>
+                <div class="font-bold tracking-tighter text-lg">
+                    <a href="#"><svg viewBox="0 0 200 60" class="w-20">
+                        <path fill="red" d="M63 14.87a7.885 7.885 0 00-5.56-5.56C52.54 8 32.88 8 32.88 8S13.23 8 8.32 9.31c-2.7.72-4.83 2.85-5.56 5.56C1.45 19.77 1.45 30 1.45 30s0 10.23 1.31 15.13c.72 2.7 2.85 4.83 5.56 5.56C13.23 52 32.88 52 32.88 52s19.66 0 24.56-1.31c2.7-.72 4.83-2.85 5.56-5.56C64.31 40.23 64.31 30 64.31 30s0-10.23-1.31-15.13z"/>
+                        <path fill="#FFF" d="M26.6 39.43L42.93 30 26.6 20.57z"/>
+                        <path fill="#282828" d="M92.69 48.03c-1.24-.84-2.13-2.14-2.65-3.91s-.79-4.12-.79-7.06v-4c0-2.97.3-5.35.9-7.15.6-1.8 1.54-3.11 2.81-3.93 1.27-.82 2.94-1.24 5.01-1.24 2.04 0 3.67.42 4.9 1.26 1.23.84 2.13 2.15 2.7 3.93.57 1.78.85 4.16.85 7.12v4c0 2.94-.28 5.3-.83 7.08-.55 1.78-1.45 3.09-2.7 3.91-1.24.82-2.93 1.24-5.06 1.24-2.18.01-3.9-.41-5.14-1.25zm6.97-4.32c.34-.9.52-2.37.52-4.4v-8.59c0-1.98-.17-3.42-.52-4.34-.34-.91-.95-1.37-1.82-1.37-.84 0-1.43.46-1.78 1.37-.34.91-.52 2.36-.52 4.34v8.59c0 2.04.16 3.51.49 4.4.33.9.93 1.35 1.8 1.35.88 0 1.48-.45 1.83-1.35zM188.16 37.13v1.39c0 1.77.05 3.09.16 3.98.1.88.32 1.53.65 1.93.33.4.84.61 1.53.61.93 0 1.57-.36 1.91-1.08.34-.72.53-1.92.56-3.6l5.35.31c.03.24.04.57.04.99 0 2.55-.7 4.45-2.09 5.71-1.39 1.26-3.36 1.89-5.91 1.89-3.06 0-5.2-.96-6.43-2.88-1.23-1.92-1.84-4.88-1.84-8.9v-4.81c0-4.14.64-7.15 1.91-9.06 1.27-1.9 3.45-2.85 6.54-2.85 2.13 0 3.76.39 4.9 1.17 1.14.78 1.94 1.99 2.41 3.64.46 1.65.7 3.93.7 6.83v4.72h-10.39zm.79-11.6c-.31.39-.52 1.03-.63 1.91-.11.88-.16 2.23-.16 4.02v1.98h4.54v-1.98c0-1.77-.06-3.11-.18-4.02-.12-.91-.34-1.56-.65-1.93-.31-.37-.8-.56-1.46-.56-.66-.01-1.15.19-1.46.58zM77.59 36.61l-7.06-25.49h6.16l2.47 11.55c.63 2.85 1.09 5.27 1.39 7.28h.18c.21-1.44.67-3.85 1.39-7.24l2.56-11.6h6.16l-7.14 25.5v12.23h-6.11V36.61zM126.45 21.28v27.55h-4.85l-.54-3.37h-.13c-1.32 2.55-3.3 3.82-5.93 3.82-1.83 0-3.18-.6-4.05-1.8-.87-1.2-1.3-3.07-1.3-5.62V21.28h6.2v20.23c0 1.23.13 2.11.4 2.63s.72.79 1.35.79c.54 0 1.06-.16 1.55-.49.49-.33.86-.75 1.1-1.26v-21.9h6.2zM158.27 21.28v27.55h-4.85l-.54-3.37h-.13c-1.32 2.55-3.3 3.82-5.93 3.82-1.83 0-3.18-.6-4.05-1.8-.87-1.2-1.3-3.07-1.3-5.62V21.28h6.2v20.23c0 1.23.13 2.11.4 2.63s.72.79 1.35.79c.54 0 1.06-.16 1.55-.49.49-.33.86-.75 1.1-1.26v-21.9h6.2z"/>
+                        <path fill="#282828" d="M143.31 16.11h-6.16v32.72h-6.07V16.11h-6.16v-4.99h18.38v4.99zM178.8 25.69c-.38-1.74-.98-3-1.82-3.78-.84-.78-1.99-1.17-3.46-1.17-1.14 0-2.2.32-3.19.97-.99.64-1.75 1.49-2.29 2.54h-.05V9.73h-5.98v39.11h5.12l.63-2.61h.13c.48.93 1.2 1.66 2.16 2.2.96.54 2.02.81 3.19.81 2.1 0 3.64-.97 4.63-2.9.99-1.93 1.48-4.95 1.48-9.06v-4.36c.01-3.08-.18-5.49-.55-7.23zm-5.69 11.24c0 2.01-.08 3.58-.25 4.72-.16 1.14-.44 1.95-.83 2.43-.39.48-.91.72-1.57.72-.51 0-.98-.12-1.42-.36-.43-.24-.79-.6-1.06-1.08V27.71c.21-.75.57-1.36 1.08-1.84.51-.48 1.06-.72 1.66-.72.63 0 1.12.25 1.46.74.34.49.58 1.33.72 2.49.13 1.17.2 2.83.2 4.99v3.56z"/>
+                    </svg></a>    
+                </div>
+            </div>
+            <div class="hidden  justify-center items-center w-full sm:flex ml-8 mr-6 md:ml-16 md:mr-8">
+                <div class="flex-1 max-w-xl">
+                    <input class="border border-gray-400 rounded-l-sm py-1 pl-3 w-full placeholder-gray-600 tracking-tight" type="text" placeholder="Search">
+                </div>
+                <div>
+                    <button class="border-t border-r border-b border-gray-400 rounded-r-sm py-2 px-6 bg-gray-200">
+                        <svg class="fill-current text-gray-600 h-4 w-4" viewBox="0 0 18 18">
+                            <path d="M12.5 11h-.79l-.28-.27A6.471 6.471 0 0013 6.5 6.5 6.5 0 106.5 13c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L17.49 16l-4.99-5zm-6 0C4.01 11 2 8.99 2 6.5S4.01 2 6.5 2 11 4.01 11 6.5 8.99 11 6.5 11z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="flex justify-between items-center flex-shrink-0 px-4">
+                <div class="block sm:hidden py-3 px-4 ">
+                    <a href="#"><svg class="fill-current text-gray-700 h-4 w-4" viewBox="0 0 18 18">
+                        <path d="M12.5 11h-.79l-.28-.27A6.471 6.471 0 0013 6.5 6.5 6.5 0 106.5 13c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L17.49 16l-4.99-5zm-6 0C4.01 11 2 8.99 2 6.5S4.01 2 6.5 2 11 4.01 11 6.5 8.99 11 6.5 11z"/>
+                    </svg></a>
+                </div>
+                <div class="py-3 px-4">
+                    <a href="#"><svg class="fill-current text-gray-700 h-5 w-5" viewBox="0 0 18 12">
+                        <path d="M14 4.5V1c0-.55-.45-1-1-1H1C.45 0 0 .45 0 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V7.5l2.29 2.29c.63.63 1.71.18 1.71-.71V2.91c0-.89-1.08-1.34-1.71-.71L14 4.5zM10 7H8v2c0 .55-.45 1-1 1s-1-.45-1-1V7H4c-.55 0-1-.45-1-1s.45-1 1-1h2V3c0-.55.45-1 1-1s1 .45 1 1v2h2c.55 0 1 .45 1 1s-.45 1-1 1z"/>
+                    </svg></a>
+                </div>
+                <div class="py-3 px-4">
+                    <a href="#"><svg class="fill-current text-gray-700 h-4 w-4" viewBox="0 0 64 64">
+                        <path d="M0 16h16V0H0zM5.33 35.34v5.34H5.33zM24 16h16V0H24zm5.33-67h5.34v5.34h-5.34zM48 0v16h16V0zm10.67 1.67h-5.34V5.33h5.34zM0 40h16V24H0zm5.33-67h5.34v5.34H5.33zM24 40h16V24H24zm5.33-67h5.34v5.34h-5.34zM48 40h16V24H48zm5.33-67h5.34v5.34h-5.34zM0 64h16V48H0zm5.33-167h5.34v5.34H5.33zM24 64h16V48H24zm5.33-167h5.34v5.34h-5.34zM48 64h16V48H48zm5.33-167h5.34v5.34h-5.34z"/>
+                    </svg></a>
+                </div>
+                <div class="py-3 px-4">
+                    <a href="#"><svg class="fill-current text-gray-700 h-5 w-5" viewBox="0 0 20 20">
+                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                    </svg></a>
+                </div>
+                <div class="">
+                    <button class="border border-indigo-500 rounded-sm px-3 py-2">
+                        <div class="flex justify-center">
+                            <div class="">
+                                <a href="#"><svg class="fill-current text-indigo-700 h-6 w-6" viewBox="0 0 20 20">
+                                    <path d="M10,20 C15.5228475,20 20,15.5228475 20,10 C20,4.4771525 15.5228475,0 10,0 C4.4771525,0 0,4.4771525 0,10 C0,15.5228475 4.4771525,20 10,20 Z M6.99999861,6.00166547 C6.99999861,4.34389141 8.3465151,3 9.99999722,3 C11.6568507,3 12.9999958,4.33902013 12.9999958,6.00166547 L12.9999958,7.99833453 C12.9999958,9.65610859 11.6534793,11 9.99999722,11 C8.34314374,11 6.99999861,9.66097987 6.99999861,7.99833453 L6.9999861,6.00166547 Z M3.34715433,14.4444439 C5.37306718,13.5169611 7.62616222,13 10,13 C12.3738388,13 14.6269347,13.5169615 16.6528458,14.4444437 C15.2177146,16.5884188 12.7737035,18 10,18 C7.22629656,18 4.78228556,16.5884189 3.34715433,14.4444439 L3.34715433,14.4444439 Z"></path>
+                                </svg></a>
+                            </div>
+                            <div class="ml-2 self-center uppercase text-sm text-indigo-700 font-semibold">Sign In</div>
+                        </div>
+                    </button>           
+                </div>
+            </div>
+        </div>
+        <div class="flex-1 flex overflow-hidden w-full">
+            <div class="hidden md:block side bg-white py-1">
+                <div class="py-5 px-1 hover:bg-gray-200">
+                    <div class="flex justify-center">
+                        <a href="#"><svg class="fill-current text-red-600 h-5 w-5" viewBox="0 0 20 20">
+                            <path d="M18.672 11H17v6c0 .445-.194 1-1 1h-4v-6H8v6H4c-.806 0-1-.555-1-1v-6H1.328c-.598 0-.47-.324-.06-.748L9.292 2.22c.195-.202.451-.302.708-.312.257.01.513.109.708.312l8.023 8.031c.411.425.539.749-.059.749z"/>
+                        </svg></a>
+                    </div>
+                    <div class="mt-1 text-center text-red-600 font-semibold" style="font-size: 0.65rem;">Home</div>
+                </div>
+                <div class="py-5 px-1 hover:bg-gray-200">
+                    <div class="flex justify-center">
+                        <a href="#"><svg class="fill-current text-gray-700 h-4 w-4" viewBox="0 0 25 25">
+                            <path d="M17.35 3a12.08 12.08 0 00-4.72-3 .5.5 0 00-.52.16.5.5 0 00-.06.54 9 9 0 01.83 6.4.16.16 0 01-.15.12c-.09 0-.11 0-.11-.07a10.31 10.31 0 00-3.7-4.57.5.5 0 00-.76.54c.59 2.31-.57 3.7-2 5.46S3 12.4 3 15.72a9.47 9.47 0 007.38 9.08A3.26 3.26 0 019 22.17c0-5.34 3.5-6.67 3.5-6.67.7 3.5 3.5 4.3 3.5 6.67a3.26 3.26 0 01-1.35 2.61 9.5 9.5 0 004-1.93A9.26 9.26 0 0022 15.69C22 9 19.47 5.1 17.35 3z"/>
+                        </svg></a>
+                    </div>
+                    <div class="mt-1 text-center text-gray-900" style="font-size: 0.65rem;">Trending</div>
+                </div>
+                <div class="py-5 px-1 hover:bg-gray-200">
+                    <div class="flex justify-center">
+                        <a href="#"><svg class="fill-current text-gray-700 h-4 w-4" viewBox="0 0 20 20">
+                            <path d="M17 6H3c-.55 0-1-.45-1-1s.45-1 1-1h14c.55 0 1 .45 1 1s-.45 1-1 1zm-2-6H5c-.55 0-1 .45-1 1s.45 1 1 1h10c.55 0 1-.45 1-1s-.45-1-1-1zm5 10v8c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2v-8c0-1.1.9-2 2-2h16c1.1 0 2 .9 2 2zm-6.81 3.56L8 10.73v6.53l5.19-2.82a.5.5 0 000-.88z"/>
+                        </svg></a>
+                    </div>
+                    <div class="mt-1 text-center text-gray-900" style="font-size: 0.65rem;">Subscriptions</div>
+                </div>
+                <div class="py-5 px-1 hover:bg-gray-200">
+                    <div class="flex justify-center">
+                        <a href="#"><svg class="fill-current text-gray-700 h-5 w-5" viewBox="0 0 25 25">
+                            <path d="M1 4c-.55 0-1 .45-1 1v13c0 1.1.9 2 2 2h13c.55 0 1-.45 1-1s-.45-1-1-1H3c-.55 0-1-.45-1-1V5c0-.55-.45-1-1-1zm17-4H6C4.9 0 4 .9 4 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2zm-8 12.5v-9l5.47 4.1c.27.2.27.6 0 .8L10 12.5z"/>
+                        </svg></a>
+                    </div>
+                    <div class="mt-1 text-center text-gray-900" style="font-size: 0.65rem;">Library</div>
+                </div>
+                <div class="py-5 px-1 hover:bg-gray-200">
+                    <div class="flex justify-center">
+                        <a href="#"><svg class="fill-current text-gray-700 h-5 w-5" viewBox="0 0 20 20">
+                            <path d="M11 1.799c-4.445 0-8.061 3.562-8.169 7.996V10H.459l3.594 3.894L7.547 10H4.875v-.205C4.982 6.492 7.683 3.85 11 3.85c3.386 0 6.131 2.754 6.131 6.15S14.386 16.15 11 16.15a6.099 6.099 0 01-3.627-1.193l-1.406 1.504A8.13 8.13 0 0011 18.199c4.515 0 8.174-3.67 8.174-8.199S15.515 1.799 11 1.799zM10 5v5a1.01 1.01 0 00.293.707l3.2 3.2c.283-.183.55-.389.787-.628L12 11V5h-2z"/>
+                        </svg></a>
+                    </div>
+                    <div class="mt-1 text-center text-gray-900" style="font-size: 0.65rem;">History</div>
+                </div>
+            </div>
+            <div class="main p-6 flex-1 overflow-y-auto">
+                <div id="Recommended">
+                    <div class="py-3 pl-1 mb-2 text-xl font-semibold leading-none">Recommended</div>
+                    <div class="flex flex-wrap">
+                        <div @mouseover="message = 1" @mouseleave="message = 0" style="max-width: 17rem">
+                            <div>
+                                <img src="../public/img/youtube thumbnails/bootstrap.webp" alt="bootstrap">
+                            </div>
+                            <div class="flex justify-between py-3">
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/traversy.jpg" alt="traversy">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">Bootstrap 5 - First Look</div>
+                                    <div class="text-gray-700">Traversy Media</div>
+                                    <div class="text-gray-700">116K views &bull; 2 days ago</div> 
+                                </div>
+                                <div class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 1 ? 'text-gray-700' : 'text-white']" viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div @mouseover="message = 2" @mouseleave="message = 0" class="ml-4 mb-8" style="max-width: 17rem;">
+                            <div>
+                                <img class="w-full" src="../public/img/youtube thumbnails/dehligirl.webp" alt="delhigirl">
+                            </div>
+                            <div class="flex justify-between py-3">
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/toi.jpg" alt="toi">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">Delhi girl shares her experience after contracting COVID-19</div>
+                                    <div class="text-gray-700">The Times of India</div>
+                                    <div class="text-gray-700">727K views &bull; 1 week ago</div> 
+                                </div>
+                                <div class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 2 ? 'text-gray-700' : 'text-white']"  viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div @mouseover="message = 3" @mouseleave="message = 0" class="ml-4 mb-8" style="max-width: 17rem;">
+                            <div>
+                                <img class="w-full" src="../public/img/youtube thumbnails/jira.webp" alt="delhigirl">
+                            </div>
+                            <div class="flex justify-between py-3">
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/naresh.jpg" alt="toi">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">JIRA Workshop Live Stream @ 10:00 AM (IST) on 28th June ...</div>
+                                    <div class="text-gray-700">Naresh i Technologies</div>
+                                    <div class="text-gray-700">485 watching</div>
+                                    <div class="pt-1">
+                                        <span class="uppercase border border-red-700 text-red-700 text-xs px-1 rounded-sm font-semibold">Live now</span>
+                                    </div>
+                                </div>
+                                <div class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 3 ? 'text-gray-700' : 'text-white']"  viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div @mouseover="message = 4" @mouseleave="message = 0" class="ml-4 mb-8" style="max-width: 17rem;">
+                            <div>
+                                <img class="w-full" src="../public/img/youtube thumbnails/applesilicon.webp" alt="delhigirl">
+                            </div>
+                            <div class="flex justify-between py-3">
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/dave.jpg" alt="toi">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">Apple Silicon - Let's Talk</div>
+                                    <div class="text-gray-700">Dave Lee</div>
+                                    <div class="text-gray-700">724K views &bull; 1 day ago</div> 
+                                </div>
+                                <div class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 4 ? 'text-gray-700' : 'text-white']"  viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div @mouseover="message = 5" @mouseleave="message = 0" style="max-width: 17rem;">
+                            <div>
+                                <img class="w-full" src="../public/img/youtube thumbnails/hometour.webp" alt="bootstrap">
+                            </div>
+                            <div class="flex justify-between py-3">
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/beautiful.jpg" alt="traversy">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">Home Tour- Actor Boman Irani's family home in the heart of...</div>
+                                    <div class="text-gray-700">Beautiful Homes</div>
+                                    <div class="text-gray-700">978K views &bull; 2 months ago</div> 
+                                </div>
+                                <div class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 5 ? 'text-gray-700' : 'text-white']"  viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div @mouseover="message = 6" @mouseleave="message = 0" class="ml-4 mb-8" style="max-width: 17rem;">
+                            <div>
+                                <img class="w-full" src="../public/img/youtube thumbnails/flexbox.webp" alt="delhigirl">
+                            </div>
+                            <div class="flex justify-between py-3">
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/learnwebcode.jpg" alt="toi">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">Flexbox Tutorial (CSS): Real Layout Examples</div>
+                                    <div class="text-gray-700">LearnWebCode</div>
+                                    <div class="text-gray-700">772K views &bull; 3 years ago</div> 
+                                </div>
+                                <div class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 6 ? 'text-gray-700' : 'text-white']"  viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div @mouseover="message = 7" @mouseleave="message = 0" class="ml-4 mb-8" style="max-width: 17rem;">
+                            <div>
+                                <img class="w-full" src="../public/img/youtube thumbnails/agartum.webp" alt="delhigirl">
+                            </div>
+                            <div class="flex justify-between py-3">
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/tseries.jpg" alt="toi">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">Agar Tum Saath Ho Maahi Ve l T-Series Mixtape l Jubin N...</div>
+                                    <div class="text-gray-700">T-Series</div>
+                                    <div class="text-gray-700">100M views &bull; 2 years ago</div>
+                                </div>
+                                <div class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 7 ? 'text-gray-700' : 'text-white']"  viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div @mouseover="message = 8" @mouseleave="message = 0" class="ml-4 mb-8" style="max-width: 17rem;">
+                            <div>
+                                <img class="w-full" src="../public/img/youtube thumbnails/googlecloud.webp" alt="delhigirl">
+                            </div>
+                            <div class="flex justify-between py-3">
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/google.jpg" alt="toi">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">Google Data Center Security: 6 Layers Deep</div>
+                                    <div class="text-gray-700">Google Cloud Platform</div>
+                                    <div class="text-gray-700">314K views &bull; 1 week ago</div> 
+                                </div>
+                                <div class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 8 ? 'text-gray-700' : 'text-white']"  viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="h-1 w-auto bg-gray-300" id="break"></div>
+
+                <div class="mt-3" id="BreakingNews">
+                    <div class="py-3 pl-2 mb-4 text-xl font-semibold leading-none">Breaking News</div>
+                    <div class="flex flex-wrap">
+                        <div @mouseover="message = 9" @mouseleave="message = 0" style="max-width: 17rem">
+                            <div>
+                                <img src="../public/img/youtube thumbnails/upboard.webp" alt="bootstrap">
+                            </div>
+                            <div class="flex justify-between py-3">
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/amar.jpg" alt="traversy">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">Bootstrap 5 - First Look</div>
+                                    <div class="text-gray-700">Traversy Media</div>
+                                    <div class="text-gray-700">116K views &bull; 2 days ago</div> 
+                                </div>
+                                <div class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 9 ? 'text-gray-700' : 'text-white']"  viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div @mouseover="message = 10" @mouseleave="message = 0" class="ml-4 mb-8" style="max-width: 17rem;">
+                            <div>
+                                <img class="w-full" src="../public/img/youtube thumbnails/upboard1.webp" alt="delhigirl">
+                            </div>
+                            <div class="flex justify-between py-3" >
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/oneindia.jpg" alt="toi">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">Delhi girl shares her experience after contracting COVID-19</div>
+                                    <div class="text-gray-700">The Times of India</div>
+                                    <div class="text-gray-700">727K views &bull; 1 week ago</div> 
+                                </div>
+                                <div  class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 10 ? 'text-gray-700' : 'text-white']" viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div @mouseover="message = 11" @mouseleave="message = 0" class="ml-4 mb-8" style="max-width: 17rem;">
+                            <div>
+                                <img class="w-full" src="../public/img/youtube thumbnails/upboard.webp" alt="delhigirl">
+                            </div>
+                            <div class="flex justify-between py-3" >
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/webdunia.jpg" alt="toi">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">JIRA Workshop Live Stream @ 10:00 AM (IST) on 28th June ...</div>
+                                    <div class="text-gray-700">Naresh i Technologies</div>
+                                    <div class="text-gray-700">485 watching</div>
+                                </div>
+                                <div  class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 11 ? 'text-gray-700' : 'text-white']" viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div @mouseover="message = 12" @mouseleave="message = 0" class="ml-4 mb-8" style="max-width: 17rem;">
+                            <div>
+                                <img class="w-full" src="../public/img/youtube thumbnails/upboard1.webp" alt="delhigirl">
+                            </div>
+                            <div class="flex justify-between py-3" >
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/rajasthan.jpg" alt="toi">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">Apple Silicon - Let's Talk</div>
+                                    <div class="text-gray-700">Dave Lee</div>
+                                    <div class="text-gray-700">724K views &bull; 1 day ago</div> 
+                                </div>
+                                <div  class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 12 ? 'text-gray-700' : 'text-white']" viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="-mt-6 fill-current text-gray-500 h-12 w-auto flex justify-center items-center hover:bg-gray-200 hover:text-gray-700">
+                    <svg class="h-8 w-8" viewBox="0 0 24 24">
+                        <path d="M15.3 9.3a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4l3.3 3.29 3.3-3.3z"/>
+                    </svg>
+                </div>
+                <div class="h-1 w-auto bg-gray-300" id="break"></div>
+
+                <div class="mt-10" id="Empty">
+                    <div class="flex flex-wrap">
+                        <div @mouseover="message = 13" @mouseleave="message = 0" style="max-width: 17rem">
+                            <div>
+                                <img src="../public/img/youtube thumbnails/upboard.webp" alt="bootstrap">
+                            </div>
+                            <div class="flex justify-between py-3" >
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/amar.jpg" alt="traversy">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">Bootstrap 5 - First Look</div>
+                                    <div class="text-gray-700">Traversy Media</div>
+                                    <div class="text-gray-700">116K views &bull; 2 days ago</div> 
+                                </div>
+                                <div  class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 13 ? 'text-gray-700' : 'text-white']" viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div @mouseover="message = 14" @mouseleave="message = 0" class="ml-4 mb-8" style="max-width: 17rem;">
+                            <div>
+                                <img class="w-full" src="../public/img/youtube thumbnails/upboard1.webp" alt="delhigirl">
+                            </div>
+                            <div class="flex justify-between py-3" >
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/oneindia.jpg" alt="toi">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">Delhi girl shares her experience after contracting COVID-19</div>
+                                    <div class="text-gray-700">The Times of India</div>
+                                    <div class="text-gray-700">727K views &bull; 1 week ago</div> 
+                                </div>
+                                <div  class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 14 ? 'text-gray-700' : 'text-white']" viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div @mouseover="message = 15" @mouseleave="message = 0" class="ml-4 mb-8" style="max-width: 17rem;">
+                            <div>
+                                <img class="w-full" src="../public/img/youtube thumbnails/upboard.webp" alt="delhigirl">
+                            </div>
+                            <div class="flex justify-between py-3" >
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/webdunia.jpg" alt="toi">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">JIRA Workshop Live Stream @ 10:00 AM (IST) on 28th June ...</div>
+                                    <div class="text-gray-700">Naresh i Technologies</div>
+                                    <div class="text-gray-700">485 watching</div>
+                                </div>
+                                <div  class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 15 ? 'text-gray-700' : 'text-white']" viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div @mouseover="message = 16" @mouseleave="message = 0" class="ml-4 mb-8" style="max-width: 17rem;">
+                            <div>
+                                <img class="w-full" src="../public/img/youtube thumbnails/upboard1.webp" alt="delhigirl">
+                            </div>
+                            <div class="flex justify-between py-3" >
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/rajasthan.jpg" alt="toi">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">Apple Silicon - Let's Talk</div>
+                                    <div class="text-gray-700">Dave Lee</div>
+                                    <div class="text-gray-700">724K views &bull; 1 day ago</div> 
+                                </div>
+                                <div  class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 16 ? 'text-gray-700' : 'text-white']" viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="h-1 w-auto bg-gray-300" id="break"></div>
+
+                <div class="mt-3" id="Trending">
+                    <div class="py-3 pl-2 mb-4 text-xl font-semibold leading-none">Trending</div>
+                    <div class="flex flex-wrap">
+                        <div @mouseover="message = 17" @mouseleave="message = 0" style="max-width: 17rem">
+                            <div>
+                                <img src="../public/img/youtube thumbnails/upboard.webp" alt="bootstrap">
+                            </div>
+                            <div class="flex justify-between py-3" >
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/amar.jpg" alt="traversy">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">Bootstrap 5 - First Look</div>
+                                    <div class="text-gray-700">Traversy Media</div>
+                                    <div class="text-gray-700">116K views &bull; 2 days ago</div> 
+                                </div>
+                                <div  class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 17 ? 'text-gray-700' : 'text-white']" viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div @mouseover="message = 18" @mouseleave="message = 0" class="ml-4 mb-8" style="max-width: 17rem;">
+                            <div>
+                                <img class="w-full" src="../public/img/youtube thumbnails/upboard1.webp" alt="delhigirl">
+                            </div>
+                            <div class="flex justify-between py-3" >
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/oneindia.jpg" alt="toi">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">Delhi girl shares her experience after contracting COVID-19</div>
+                                    <div class="text-gray-700">The Times of India</div>
+                                    <div class="text-gray-700">727K views &bull; 1 week ago</div> 
+                                </div>
+                                <div  class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 18 ? 'text-gray-700' : 'text-white']" viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div @mouseover="message = 19" @mouseleave="message = 0" class="ml-4 mb-8" style="max-width: 17rem;">
+                            <div>
+                                <img class="w-full" src="../public/img/youtube thumbnails/upboard.webp" alt="delhigirl">
+                            </div>
+                            <div class="flex justify-between py-3" >
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/webdunia.jpg" alt="toi">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">JIRA Workshop Live Stream @ 10:00 AM (IST) on 28th June ...</div>
+                                    <div class="text-gray-700">Naresh i Technologies</div>
+                                    <div class="text-gray-700">485 watching</div>
+                                </div>
+                                <div  class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 19 ? 'text-gray-700' : 'text-white']" viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div @mouseover="message = 20" @mouseleave="message = 0" class="ml-4 mb-8" style="max-width: 17rem;">
+                            <div>
+                                <img class="w-full" src="../public/img/youtube thumbnails/upboard1.webp" alt="delhigirl">
+                            </div>
+                            <div class="flex justify-between py-3" >
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/rajasthan.jpg" alt="toi">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">Apple Silicon - Let's Talk</div>
+                                    <div class="text-gray-700">Dave Lee</div>
+                                    <div class="text-gray-700">724K views &bull; 1 day ago</div> 
+                                </div>
+                                <div  class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 20 ? 'text-gray-700' : 'text-white']" viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="-mt-6 fill-current text-gray-500 h-12 w-auto flex justify-center items-center hover:bg-gray-200 hover:text-gray-700">
+                    <svg class="h-8 w-8" viewBox="0 0 24 24">
+                        <path d="M15.3 9.3a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4l3.3 3.29 3.3-3.3z"/>
+                    </svg>
+                </div>
+                <div class="h-1 w-auto bg-gray-300" id="break"></div>
+
+                <div class="mt-10" id="Empty">
+                    <div class="flex flex-wrap">
+                        <div @mouseover="message = 21" @mouseleave="message = 0" style="max-width: 17rem">
+                            <div>
+                                <img src="../public/img/youtube thumbnails/upboard.webp" alt="bootstrap">
+                            </div>
+                            <div class="flex justify-between py-3" >
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/amar.jpg" alt="traversy">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">Bootstrap 5 - First Look</div>
+                                    <div class="text-gray-700">Traversy Media</div>
+                                    <div class="text-gray-700">116K views &bull; 2 days ago</div> 
+                                </div>
+                                <div  class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 21 ? 'text-gray-700' : 'text-white']" viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div @mouseover="message = 22" @mouseleave="message = 0" class="ml-4 mb-8" style="max-width: 17rem;">
+                            <div>
+                                <img class="w-full" src="../public/img/youtube thumbnails/upboard1.webp" alt="delhigirl">
+                            </div>
+                            <div class="flex justify-between py-3" >
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/oneindia.jpg" alt="toi">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">Delhi girl shares her experience after contracting COVID-19</div>
+                                    <div class="text-gray-700">The Times of India</div>
+                                    <div class="text-gray-700">727K views &bull; 1 week ago</div> 
+                                </div>
+                                <div  class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 22 ? 'text-gray-700' : 'text-white']" viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div @mouseover="message = 23" @mouseleave="message = 0" class="ml-4 mb-8" style="max-width: 17rem;">
+                            <div>
+                                <img class="w-full" src="../public/img/youtube thumbnails/upboard.webp" alt="delhigirl">
+                            </div>
+                            <div class="flex justify-between py-3" >
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/webdunia.jpg" alt="toi">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">JIRA Workshop Live Stream @ 10:00 AM (IST) on 28th June ...</div>
+                                    <div class="text-gray-700">Naresh i Technologies</div>
+                                    <div class="text-gray-700">485 watching</div>
+                                </div>
+                                <div  class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 23 ? 'text-gray-700' : 'text-white']" viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div @mouseover="message = 24" @mouseleave="message = 0" class="ml-4 mb-8" style="max-width: 17rem;">
+                            <div>
+                                <img class="w-full" src="../public/img/youtube thumbnails/upboard1.webp" alt="delhigirl">
+                            </div>
+                            <div class="flex justify-between py-3" >
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/rajasthan.jpg" alt="toi">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">Apple Silicon - Let's Talk</div>
+                                    <div class="text-gray-700">Dave Lee</div>
+                                    <div class="text-gray-700">724K views &bull; 1 day ago</div> 
+                                </div>
+                                <div  class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 24 ? 'text-gray-700' : 'text-white']" viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div @mouseover="message = 25" @mouseleave="message = 0" style="max-width: 17rem">
+                            <div>
+                                <img src="../public/img/youtube thumbnails/upboard.webp" alt="bootstrap">
+                            </div>
+                            <div class="flex justify-between py-3" >
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/amar.jpg" alt="traversy">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">Bootstrap 5 - First Look</div>
+                                    <div class="text-gray-700">Traversy Media</div>
+                                    <div class="text-gray-700">116K views &bull; 2 days ago</div> 
+                                </div>
+                                <div  class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 25 ? 'text-gray-700' : 'text-white']" viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div @mouseover="message = 26" @mouseleave="message = 0" class="ml-4 mb-8" style="max-width: 17rem;">
+                            <div>
+                                <img class="w-full" src="../public/img/youtube thumbnails/upboard1.webp" alt="delhigirl">
+                            </div>
+                            <div class="flex justify-between py-3" >
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/oneindia.jpg" alt="toi">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">Delhi girl shares her experience after contracting COVID-19</div>
+                                    <div class="text-gray-700">The Times of India</div>
+                                    <div class="text-gray-700">727K views &bull; 1 week ago</div> 
+                                </div>
+                                <div  class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 26 ? 'text-gray-700' : 'text-white']" viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div @mouseover="message = 27" @mouseleave="message = 0" class="ml-4 mb-8" style="max-width: 17rem;">
+                            <div>
+                                <img class="w-full" src="../public/img/youtube thumbnails/upboard.webp" alt="delhigirl">
+                            </div>
+                            <div class="flex justify-between py-3" >
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/webdunia.jpg" alt="toi">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">JIRA Workshop Live Stream @ 10:00 AM (IST) on 28th June ...</div>
+                                    <div class="text-gray-700">Naresh i Technologies</div>
+                                    <div class="text-gray-700">485 watching</div>
+                                </div>
+                                <div  class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 27 ? 'text-gray-700' : 'text-white']" viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div @mouseover="message = 28" @mouseleave="message = 0" class="ml-4 mb-8" style="max-width: 17rem;">
+                            <div>
+                                <img class="w-full" src="../public/img/youtube thumbnails/upboard1.webp" alt="delhigirl">
+                            </div>
+                            <div class="flex justify-between py-3" >
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/rajasthan.jpg" alt="toi">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">Apple Silicon - Let's Talk</div>
+                                    <div class="text-gray-700">Dave Lee</div>
+                                    <div class="text-gray-700">724K views &bull; 1 day ago</div> 
+                                </div>
+                                <div  class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 28 ? 'text-gray-700' : 'text-white']" viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div @mouseover="message = 29" @mouseleave="message = 0" style="max-width: 17rem">
+                            <div>
+                                <img src="../public/img/youtube thumbnails/upboard.webp" alt="bootstrap">
+                            </div>
+                            <div class="flex justify-between py-3" >
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/amar.jpg" alt="traversy">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">Bootstrap 5 - First Look</div>
+                                    <div class="text-gray-700">Traversy Media</div>
+                                    <div class="text-gray-700">116K views &bull; 2 days ago</div> 
+                                </div>
+                                <div  class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 29 ? 'text-gray-700' : 'text-white']" viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div @mouseover="message = 30" @mouseleave="message = 0" class="ml-4 mb-8" style="max-width: 17rem;">
+                            <div>
+                                <img class="w-full" src="../public/img/youtube thumbnails/upboard1.webp" alt="delhigirl">
+                            </div>
+                            <div class="flex justify-between py-3" >
+                                <div class="pt-1 pr-3">
+                                    <img style="width: 2.2rem;" class="rounded-full" src="../public/img/youtube thumbnails/oneindia.jpg" alt="toi">
+                                </div>
+                                <div class="flex-1 text-sm leading-snug">
+                                    <div class="font-semibold mb-1">Delhi girl shares her experience after contracting COVID-19</div>
+                                    <div class="text-gray-700">The Times of India</div>
+                                    <div class="text-gray-700">727K views &bull; 1 week ago</div> 
+                                </div>
+                                <div  class="pt-1">
+                                    <a href="#"><svg class="fill-current hover:text-gray-900 h-5 w-5" :class="[message == 30 ? 'text-gray-700' : 'text-white']" viewBox="0 0 20 20">
+                                        <path d="M10,12 C11.1045695,12 12,11.1045695 12,10 C12,8.8954305 11.1045695,8 10,8 C8.8954305,8 8,8.8954305 8,10 C8,11.1045695 8.8954305,12 10,12 Z M10,6 C11.1045695,6 12,5.1045695 12,4 C12,2.8954305 11.1045695,2 10,2 C8.8954305,2 8,2.8954305 8,4 C8,5.1045695 8.8954305,6 10,6 Z M10,18 C11.1045695,18 12,17.1045695 12,16 C12,14.8954305 11.1045695,14 10,14 C8.8954305,14 8,14.8954305 8,16 C8,17.1045695 8.8954305,18 10,18 Z"></path>
+                                    </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                message: ""
+            }
+        });
+    </script>
+</body>
+</html>
